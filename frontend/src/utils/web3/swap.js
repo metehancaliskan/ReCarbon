@@ -11,8 +11,10 @@ const RCtoMNTabi = [
 
   const signer = provider.getSigner();
 
-  export const RCtoMNT = async (_RCamount ,) => {
-	const contract = new ethers.Contract(dexaddress, RCtoMNTabi, signer);   
+  export const RCtoMNT = async (_RCamount) => {
+  console.log("heyyy", _RCamount.toString()); 
+	const contract = new ethers.Contract(dexaddress, RCtoMNTabi, signer);  
+  
   let num = ethers.utils.parseEther(_RCamount.toString());
 	const tx = await contract.functions.RCtoMNT(num,1);
 	const receipt = await tx.wait();

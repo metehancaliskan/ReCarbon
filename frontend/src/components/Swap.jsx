@@ -27,7 +27,8 @@ const Swap = () => {
   
 
   useEffect(() => {
-   try {
+   try { 
+    console.log(amount)
     getbalanceOf();
    } catch (error) {
     
@@ -54,10 +55,14 @@ const Swap = () => {
   }
 
   async function swapCall() {
-    if (swap[0].symbol === 'CARBON') {
-      await RCtoMNT(amount);
-    } else {
-      await MNTtoRC(amount);
+    try {
+      if (swap[0].symbol === 'RC') {
+        await RCtoMNT(amount.toString());
+      } else {
+        await MNTtoRC(amount.toString());
+      }
+    } catch (error) {
+      console.error(error);
     }
     return false;
   }
@@ -71,6 +76,7 @@ const Swap = () => {
         <input
           type="text"
           onChange={(event) => {
+            console.log("Input value: ", event.target.value);
             setAmount(event.target.value);
           }}
           className="block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
