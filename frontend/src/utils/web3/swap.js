@@ -2,42 +2,23 @@
 import { BigNumber, ethers } from "ethers";
 
 const provider = new ethers.providers.Web3Provider(window.ethereum);
-const dexaddress = "0x4236B60776d7c8663fd8A907a521522159A90470";
+const dexaddress = "0x207ce87A6E2cbcc082b65D6Da74f65C2C69c416C";
 
-const tokenAddress = "0xE3C0ED3785A1430534b108f74F37A27BC2eaca93";
-const cryptoDevTokenToEthabi = [
-    "function cryptoDevTokenToEth(uint256 _tokensSold, uint256 _minEth)"
+const tokenAddress = "0xD34D9E5009d6FbF489739e08AF79403790783f3f";
+const RCtoMNTabi = [
+    "function RCtoMNT(uint _RCamount, uint _minMNT)"
   ];
 
   const signer = provider.getSigner();
 
-
-
-  export const cryptoDevTokenToEth = async (_tokensSold ,_minEth) => {
-	const contract = new ethers.Contract(dexaddress, cryptoDevTokenToEthabi, signer);   
-
-    let num = ethers.utils.parseEther(_tokensSold.toString());
-
-	const tx = await contract.functions.cryptoDevTokenToEth(num,1);
+  export const RCtoMNT = async (_RCamount ,) => {
+	const contract = new ethers.Contract(dexaddress, RCtoMNTabi, signer);   
+  let num = ethers.utils.parseEther(_RCamount.toString());
+	const tx = await contract.functions.RCtoMNT(num,1);
 	const receipt = await tx.wait();
+
 	console.log("receipt", receipt);
 }
-
-
-const increaseAllowanceabi = [
-    "function increaseAllowance(address spender, uint256 addedValue) returns (bool)"
-  ];
-  
-
-export const increaseAllowance = async (_tokensSold ,) => { 
-
-      const contract = new ethers.Contract(tokenAddress, increaseAllowanceabi, signer);  
-      const tx = await contract.functions.increaseAllowance(dexaddress,_tokensSold);
-      const receipt = await tx.wait();
-      console.log("receipt", receipt);
-  }
-  
-
   
   const getAmountOfTokensabi = [
     "function getAmountOfTokens(uint256 inputAmount, uint256 inputReserve, uint256 outputReserve) pure returns (uint256)"
@@ -63,15 +44,21 @@ let outputReserve = inputReserve-inputAmount;
     return result/100;
   }
 
-const ethToCryptoDevTokenabi = [
-  "function ethToCryptoDevToken(uint256 _minTokens) payable"
+const MNTtoRCabi = [
+  "function MNTtoRC(uint _MNTamount, uint _minRC)"
 ];
 
-export const ethToCryptoDevToken = async (_avaxAmount ,) => { 
+export const MNTtoRC = async (_MNTamount ,) => { 
 
-  const options = {value: ethers.utils.parseEther(_avaxAmount.toString())}
-	const contract = new ethers.Contract(dexaddress, ethToCryptoDevTokenabi, signer);   
-	const tx = await contract.functions.ethToCryptoDevToken(1,options);
+  const amount = Number(_MNTamount);
+  if (isNaN(amount)) {
+    console.error('Invalid _MNTamount');
+    return;
+  }
+
+  const options = {value: ethers.utils.parseEther(_MNTamount.toString())}
+	const contract = new ethers.Contract(dexaddress, MNTtoRCabi, signer);   
+	const tx = await contract.functions.MNTtoRC(1,options);
   const receipt = await tx.wait();
 	console.log("receipt", receipt);
 }
@@ -89,6 +76,6 @@ export const balanceOf = async () => {
   result = ethers.utils.formatEther(result.toString());
 
 
-	console.log("result", result);
+	// console.log("result", result);
   return result;
 }

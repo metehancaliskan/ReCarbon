@@ -48,7 +48,7 @@ const { chains, provider } = configureChains(
 );
 
 const { connectors } = getDefaultWallets({
-  appName: "MonoCarbon",
+  appName: "ReCarbon",
   chains
 });
 

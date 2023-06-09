@@ -1,30 +1,29 @@
 import { useState, useEffect } from 'react';
 import SvgIcon from '../components/SvgIcon';
 import {
-  cryptoDevTokenToEth,
-  increaseAllowance,
+  RCtoMNT,
   getAmountOfTokens,
   balanceOf,
-  ethToCryptoDevToken
+  MNTtoRC
 } from '../utils/web3/swap';
 const tokens = {
   CARBON: {
-    symbol: 'CARBON',
-    name: 'Carbon',
+    symbol: 'RC',
+    name: 'ReCarbon',
   },
-  ETH: {
-    symbol: 'ETH',
-    name: 'GoerliETH',
+  MNT: {
+    symbol: 'MNT',
+    name: 'Mantle',
   },
 };
 const Swap = () => {
   const fromToken = tokens.CARBON;
-  const toToken = tokens.ETH;
+  const toToken = tokens.MNT;
   const [direction, setDirection] = useState(0);
   const [swap, setSwap] = useState([fromToken, toToken]);
   const [amount, setAmount] = useState(0);
   const [amountOfTokens, setmountOfTokens] = useState(0);
-  const [balanceText, setbBalanceText] = useState("mc4");
+  const [balanceText, setbBalanceText] = useState("RC");
   
 
   useEffect(() => {
@@ -44,7 +43,7 @@ const Swap = () => {
 
   async function getbalanceOf(){
     let tempBalance = await balanceOf();
-    setbBalanceText("Your MonoCarbon Balance is:"+ tempBalance);
+    setbBalanceText("Your ReCarbon Balance is:"+ tempBalance);
   }
 
   async function getAmountOfToken() {
@@ -56,10 +55,9 @@ const Swap = () => {
 
   async function swapCall() {
     if (swap[0].symbol === 'CARBON') {
-      //await increaseAllowance(amount);
-      await cryptoDevTokenToEth(amount, 1);
+      await RCtoMNT(amount);
     } else {
-      await ethToCryptoDevToken(amount);
+      await MNTtoRC(amount);
     }
     return false;
   }

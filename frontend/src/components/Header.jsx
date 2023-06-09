@@ -19,7 +19,7 @@ const Header = () => {
           >
             <img src="/logo.svg" alt="MonoCarbon" width="30" height="60" className="mr-4" />
             <span className="self-center text-xl font-bold whitespace-nowrap">
-              MonoCarbon
+              ReCarbon
             </span>
           </Link>
           <button

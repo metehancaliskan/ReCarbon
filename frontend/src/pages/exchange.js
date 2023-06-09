@@ -9,9 +9,9 @@ function Exchange() {
   const [activeTab, setActiveTab] = useState('swap');
 
 
-const provider = new ethers.providers.JsonRpcProvider("https://api.avax-test.network/ext/bc/C/rpc");
+const provider = new ethers.providers.JsonRpcProvider("https://rpc.testnet.mantle.xyz/");
 
-const DexAddress = "0x0355eE85Be5eD60331a36Ee096e829f500FC57c9";
+const DexAddress = "0x207ce87A6E2cbcc082b65D6Da74f65C2C69c416C";
 const totalSupplyabi = [
   "function totalSupply() view returns (uint256)"
 ];
@@ -23,13 +23,13 @@ async function totalSupply() {
 	console.log("result", result);
 }
 
-const cryptoDevTokenAddressabi = [
-  "function cryptoDevTokenAddress() view returns (address)"
+const tokenRCAddressabi = [
+  "function tokenRCAddress() view returns (address)"
 ];
 
-async function cryptoDevTokenAddress() {
-	const contract = new ethers.Contract(DexAddress, cryptoDevTokenAddressabi, provider);   
-	const result = await contract.functions.cryptoDevTokenAddress();
+async function tokenRCAddress() {
+	const contract = new ethers.Contract(DexAddress, tokenRCAddressabi, provider);   
+	const result = await contract.functions.tokenRCAddress();
   console.log("result", result[0]);
 }
 
@@ -38,7 +38,7 @@ async function cryptoDevTokenAddress() {
 useEffect(() => {
   try {
   //totalSupply();
-  //cryptoDevTokenAddress(); 
+  //tokenRCAddress(); 
 } catch (err) {
   console.log('error totalSupply ...', err)
 }

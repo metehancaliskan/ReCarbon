@@ -1,7 +1,7 @@
 function App() {
   return (
     <div>
-      <h1 className="underline">MonoCarbon</h1>
+      <h1 className="underline">ReCarbon</h1>
     </div>
   );
 }
