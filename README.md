@@ -1,9 +1,3 @@
-# Carbon
-
-![](frontend/public/logo.svg)
-
-**Asset Backed NFT Market  & Collateralized Carbon Credit Exchange**
-
 
 ## Development
 
