@@ -1,11 +1,11 @@
 
-import { BigNumber, ethers } from "ethers";
+import { ethers } from "ethers";
 
 const provider = new ethers.providers.Web3Provider(window.ethereum);
-const dexaddress = "0x207ce87A6E2cbcc082b65D6Da74f65C2C69c416C";
+const dexaddress = "0x58da26461730bE52e8791E896b99587E08b2d5bA";
 
-const tokenAddressRC = "0xD34D9E5009d6FbF489739e08AF79403790783f3f";
-const tokenAddressCRBN = "0x581a79E6dc453d99b7553A4A7E6bb93f72f49b4C";
+const tokenAddressRC = "0xAA36f53E71A011105D7CFb22738a7DD2bB465De6";
+const tokenAddressCRBN = "0xF55D19a5720fCe56d97B4fB24F615c86333c977d";
 
 
 const RCtoMNTabi = [

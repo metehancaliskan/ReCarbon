@@ -1,17 +1,15 @@
 import { ethers } from "ethers";
-import { approval } from "./certificate";
 
 const provider = new ethers.providers.Web3Provider(window.ethereum);
-const address = "0xf6a1a9f46125327236c0b9848AebD21589DB8200";
+const address = "0x76D2C06f29cc38357f5b777898F80AB8aFe8000E";
 const fracAbi = [
-    "function fractionizeNft(uint256 nftId, uint256 amount)"
+    "function fractionizeNft(uint256 nftId)"
 ];
 
 export const fractionizeNft = async (_id) => {
-  //await approval(address);
   const signer = provider.getSigner();
 	const contract = new ethers.Contract(address, fracAbi, signer);   
-	const tx = await contract.fractionizeNft(_id,1);
+	const tx = await contract.fractionizeNft(_id);
 
 
 	const receipt = await tx.wait();

@@ -26,8 +26,12 @@ const Provider = () => {
   };
 
   const fracturize = async () => {
-    await fractionizeNft(parseInt(nftID));
-    setNftID('');
+    try {
+      await fractionizeNft(parseInt(nftID));
+      setNftID('');
+    } catch (error) {
+      console.error("Failed to fracturize NFT:", error);
+    }
   };
 
   return (
