@@ -12,10 +12,10 @@ function Home() {
           </div>
           <div className="lg:flex-grow md:w-1/2 lg:pl-18 xl:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
             <h1 className="title-font text-4xl sm:text-5xl md:text-5xl lg:text-6xl mb-4 font-medium text-gray-900">
-              Mono Carbon
+              ReCarbon
             </h1>
             <p className="mb-8 leading-relaxed">
-Mono Carbon is a decentralized marketplace for carbon credits.
+ReCarbon is a decentralized marketplace for carbon credits.
 It is a platform for the issuance, trading, and management of carbon credits. 
             </p>
             <ul class="text-gray">
@@ -36,7 +36,7 @@ It is a platform for the issuance, trading, and management of carbon credits.
   <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
 
-<span class="ml-2">Issue Carbon NFT</span>
+<span class="ml-2">New Type of Financial Instrument</span>
                 </li>
             </ul>
           </div>

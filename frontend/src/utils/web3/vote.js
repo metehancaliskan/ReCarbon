@@ -1,7 +1,7 @@
 import { ethers } from "ethers";
 
 const provider = new ethers.providers.Web3Provider(window.ethereum);
-const address = "0xAB4D6E14AB3191Ac522d2b813aEF9900CBd2A78A";
+const address = "0x3C70A4aD84f1b52ad8Bbb89D8b75Fd1010A59622";
 const voteAbi = [
     "function vote(address project, uint256 numberOfVotes)"
 ];
