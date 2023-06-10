@@ -14,6 +14,7 @@ import Detail from './pages/detail.js';
 import Provider from './pages/provider.js';
 import Error from './pages/error.js';
 import Voting from './pages/voting.js';
+import Staking from './pages/staking.js';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -72,6 +73,7 @@ root.render(
               <Route path="/provider" element={<Provider />}></Route>
               <Route path="/detail/:id" element={<Detail />}></Route>
               <Route path="/voting" element={<Voting />}></Route>
+              <Route path="/staking" element={<Staking />}></Route>
               <Route path="*" element={<Error code="404" />}></Route>
 
             </Routes>

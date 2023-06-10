@@ -117,6 +117,21 @@ const Header = () => {
                 </Link>
               </li>
               <li>
+                <Link
+                  to="/staking"
+                  className={
+                    location.pathname === '/staking'
+                      ? 'block py-2 pr-4 pl-3 md:p-0'
+                      : 'block py-2 pr-4 pl-3 text-gray-400 md:border-0 md:p-0'
+                  }
+                  onClick={() => {
+                    setIsNavExpanded(false);
+                  }}
+                >
+                  Staking
+                </Link>
+              </li>
+              <li>
                 <ConnectButton/>
               </li>
             </ul>
