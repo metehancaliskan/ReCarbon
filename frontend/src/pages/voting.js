@@ -9,11 +9,11 @@ function Voting() {
 
   const listedProjects = [
     {
-      id: 1,
+      id: 0,
       project: 'ra'
     },
     {
-      id: 2,
+      id: 1,
       project: 're'    }
   ];
 

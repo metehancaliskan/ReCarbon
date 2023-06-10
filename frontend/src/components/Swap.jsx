@@ -28,7 +28,6 @@ const Swap = () => {
 
   useEffect(() => {
    try { 
-    console.log(amount)
     getbalanceOf();
    } catch (error) {
     
