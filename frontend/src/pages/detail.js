@@ -9,9 +9,9 @@ const Detail = () => {
 
   const data = {
     id: 1,
-    cert_id: 13124,
-    provider: 'Akbank',
-    price: 3,
+    cert_id: 1,
+    provider: 'Provider',
+    price: 10,
   };
 
   async function retireCall() {

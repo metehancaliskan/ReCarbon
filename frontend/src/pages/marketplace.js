@@ -50,7 +50,7 @@ const asyncGet =  async () =>{
     modifiedNfts.push({
       id: Number(nfts[i]),
       provider: 'akb',
-      price: Number(price)
+      price: Number(price)/10**18
     })
   }
   return modifiedNfts.concat(listedNfts);

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import SvgIcon from '../components/SvgIcon';
+import { retireNft } from '../utils/web3/carbonMarket';
 
 const NftCard = ({ id, price }) => {
   const [nftData, setNftData] = useState({});
@@ -12,6 +13,10 @@ const NftCard = ({ id, price }) => {
       cert_id: id * 52,
       image: '/nft.jpeg',
     });
+  };
+
+  const retire = async (id) => {
+      await retireNft(nftData.id);
   };
 
   useEffect(() => {
@@ -48,12 +53,12 @@ const NftCard = ({ id, price }) => {
           </div>
         </div>
         <div className="w-full text-gray-50">
-          <Link
-            to={`/detail/${id}`}
+          <button
+            onClick={retire}
             className="w-full flex justify-center items-center rounded bg-[#2a2a2a] p-4 hover:bg-[#F9FAFB] hover:text-black"
           >
             Retire
-          </Link>
+          </button>
         </div>
       </div>
     </div>
