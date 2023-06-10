@@ -6,7 +6,8 @@ import { ethers } from "ethers";
 
 
 function Exchange() {
-  const [activeTab, setActiveTab] = useState('swap');
+  const [activeTabRC, setActiveTabRC] = useState('swapRC');
+  const [activeTabCBRN, setActiveTabCBRN] = useState('swapCBRN');
 
 
 const provider = new ethers.providers.JsonRpcProvider("https://rpc.testnet.mantle.xyz/");
@@ -47,14 +48,14 @@ useEffect(() => {
 
   return (
     <section className="w-full pt-24 md:pt-0 md:h-screen relative flex flex-col justify-center items-center">
-      <div className="container w-full flex items-center justify-center">
+      <div className="container w-full flex items-center justify-between">
         <div className="w-full max-w-lg shadow-2xl border-2 border-gray-100 rounded-lg">
           <nav className="block w-full border-b-2 border-gray-100">
             <ul className="flex">
               <li
                 className={
                   'text-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none ' +
-                  (activeTab === 'swap'
+                  (activeTabRC === 'swapRC'
                     ? 'text-blue-500 border-b-2 font-medium border-blue-500'
                     : '')
                 }
@@ -64,7 +65,7 @@ useEffect(() => {
                   className="cursor-pointer flex items-center"
                   onClick={(e) => {
                     e.preventDefault();
-                    setActiveTab('swap');
+                    setActiveTabRC('swapRC');
                   }}
                 >
                   Swap
@@ -73,7 +74,7 @@ useEffect(() => {
               <li
                 className={
                   'text-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none ' +
-                  (activeTab === 'liquidity'
+                  (activeTabRC === 'liquidity'
                     ? 'text-blue-500 border-b-2 font-medium border-blue-500'
                     : '')
                 }
@@ -83,7 +84,7 @@ useEffect(() => {
                   className="cursor-pointer flex items-center"
                   onClick={(e) => {
                     e.preventDefault();
-                    setActiveTab('liquidity');
+                    setActiveTabRC('liquidity');
                   }}
                 >
                   Liquidity
@@ -92,8 +93,57 @@ useEffect(() => {
             </ul>
           </nav>
           <div className="p-5">
-            {activeTab === 'swap' && <Swap />}
-            {activeTab === 'liquidity' && <Liquidity />}
+            {activeTabRC === 'swapRC' && <Swap sdf={{ is_rc: true }} />}
+            {activeTabRC === 'liquidity' && <Liquidity />}
+          </div>
+        </div>
+
+        <div className="w-full max-w-lg shadow-2xl border-2 border-gray-100 rounded-lg">
+          <nav className="block w-full border-b-2 border-gray-100">
+            <ul className="flex">
+              <li
+                className={
+                  'text-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none ' +
+                  (activeTabCBRN === 'swapCBRN'
+                    ? 'text-blue-500 border-b-2 font-medium border-blue-500'
+                    : '')
+                }
+              >
+                <a
+                  href="/#"
+                  className="cursor-pointer flex items-center"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setActiveTabCBRN('swapCBRN');
+                  }}
+                >
+                  Swap
+                </a>
+              </li>
+              <li
+                className={
+                  'text-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none ' +
+                  (activeTabCBRN === 'liquidity'
+                    ? 'text-blue-500 border-b-2 font-medium border-blue-500'
+                    : '')
+                }
+              >
+                <a
+                  href="/#"
+                  className="cursor-pointer flex items-center"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setActiveTabCBRN('liquidity');
+                  }}
+                >
+                  Liquidity
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <div className="p-5">
+            {activeTabCBRN === 'swapCBRN' && <Swap sdf={{ is_rc: false }} />}
+            {activeTabCBRN === 'liquidity' && <Liquidity />}
           </div>
         </div>
       </div>

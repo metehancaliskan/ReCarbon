@@ -4,7 +4,10 @@ import { BigNumber, ethers } from "ethers";
 const provider = new ethers.providers.Web3Provider(window.ethereum);
 const dexaddress = "0x207ce87A6E2cbcc082b65D6Da74f65C2C69c416C";
 
-const tokenAddress = "0xD34D9E5009d6FbF489739e08AF79403790783f3f";
+const tokenAddressRC = "0xD34D9E5009d6FbF489739e08AF79403790783f3f";
+const tokenAddressCRBN = "0x581a79E6dc453d99b7553A4A7E6bb93f72f49b4C";
+
+
 const RCtoMNTabi = [
     "function RCtoMNT(uint _RCamount, uint _minMNT)"
   ];
@@ -19,6 +22,20 @@ const RCtoMNTabi = [
 	const receipt = await tx.wait();
 
 	console.log("receipt", receipt);
+}
+
+const CRBNtoMNTabi = [
+  "function CRBNtoMNT(uint _CRBNamount, uint _minMNT)"
+];
+
+export const CRBNtoMNT = async (_CRBNamount) => {
+const contract = new ethers.Contract(dexaddress, CRBNtoMNTabi, signer);  
+
+let num = ethers.utils.parseEther(_CRBNamount.toString());
+const tx = await contract.functions.CRBNtoMNT(num,1);
+const receipt = await tx.wait();
+
+console.log("receipt", receipt);
 }
   
   const getAmountOfTokensabi = [
@@ -64,14 +81,45 @@ export const MNTtoRC = async (_MNTamount ,) => {
 	console.log("receipt", receipt);
 }
 
+const MNTtoCRBNabi = [
+  "function MNTtoCRBN(uint _MNTamount, uint _minCRBN)"
+];
+
+export const MNTtoCRBN = async (_MNTamount ,) => { 
+
+  const amount = Number(_MNTamount);
+  if (isNaN(amount)) {
+    console.error('Invalid _MNTamount');
+    return;
+  }
+
+  const options = {value: ethers.utils.parseEther(_MNTamount.toString())}
+	const contract = new ethers.Contract(dexaddress, MNTtoCRBNabi, signer);   
+	const tx = await contract.functions.MNTtoCRBN(1,options);
+  const receipt = await tx.wait();
+	console.log("receipt", receipt);
+}
+
 const balanceOfabi = [
   "function balanceOf(address account) view returns (uint256)"
 ];
 
 
-export const balanceOf = async () => { 
+export const balanceOfRC = async () => { 
 
-  const contract = new ethers.Contract(tokenAddress, balanceOfabi, signer);   
+  const contract = new ethers.Contract(tokenAddressRC, balanceOfabi, signer);   
+  let tempAdress = await signer.getAddress();
+	let  result = await contract.functions.balanceOf(tempAdress);
+  result = ethers.utils.formatEther(result.toString());
+
+
+	// console.log("result", result);
+  return result;
+}
+
+export const balanceOfCRBN = async () => { 
+
+  const contract = new ethers.Contract(tokenAddressCRBN, balanceOfabi, signer);   
   let tempAdress = await signer.getAddress();
 	let  result = await contract.functions.balanceOf(tempAdress);
   result = ethers.utils.formatEther(result.toString());
