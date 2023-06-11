@@ -15,7 +15,7 @@ const NftCard = ({ id, price }) => {
     });
   };
 
-  const retire = async (id) => {
+  const retire = async () => {
       await retireNft(nftData.id);
   };
 

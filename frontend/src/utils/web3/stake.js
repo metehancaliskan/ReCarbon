@@ -1,7 +1,7 @@
 import { ethers } from "ethers";
 
 const provider = new ethers.providers.Web3Provider(window.ethereum);
-const address = "0x6F624d5331b18673498751efa240CE170e74a248";
+const address = "0x8EF67d7c7281Fd2c0307Bc37f06c3B4B02402052";
 const stakingAbi = [
     "function stake(uint256 amount) external"
 ];

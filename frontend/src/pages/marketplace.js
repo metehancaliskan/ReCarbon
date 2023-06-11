@@ -11,12 +11,12 @@ function Marketplace() {
 
   const listedNfts = [
     {
-      id: 200,
+      id: 11,
       provider: 'bis',
-      price: 1200,
+      price: 3000,
     },
     {
-      id: 201,
+      id: 9,
       provider: 'gns',
       price: 1400,
     },

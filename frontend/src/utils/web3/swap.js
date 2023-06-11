@@ -2,10 +2,10 @@
 import { ethers } from "ethers";
 
 const provider = new ethers.providers.Web3Provider(window.ethereum);
-const dexaddress = "0xBFf76279a235747a901feDDeC05CDd941ceD15Fa";
+const dexaddress = "0x0aA731D0d67B80842210004e9d8095Eb9f9543d8";
 
-const tokenAddressRC = "0x794e869B9a17e5CFD83222C2Cf807C7c441C125F";
-const tokenAddressCRBN = "0x73b5090dD335Aa11Fae07CE43CFf2d712B3b7ad1";
+const tokenAddressRC = "0x7Cd33D6C90C9864cc0B8d5392d55F451D2239EB5";
+const tokenAddressCRBN = "0x5A003936f3b87ebe22DD11A4aC721932aACB8ED5";
 
 
 const RCtoMNTabi = [

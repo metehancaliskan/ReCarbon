@@ -7,7 +7,7 @@ function Home() {
             <img
               className="object-cover object-center rounded"
               alt="hero"
-              src="/images/mono-carbon-infra.png"
+              src="images/ReCarbon.png"
             />
           </div>
           <div className="lg:flex-grow md:w-1/2 lg:pl-18 xl:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
@@ -15,8 +15,7 @@ function Home() {
               ReCarbon
             </h1>
             <p className="mb-8 leading-relaxed">
-ReCarbon is a decentralized marketplace for carbon credits.
-It is a platform for the issuance, trading, and management of carbon credits. 
+ReCarbon is a blockchain-based initiative that balances the carbon economy by financing carbon-intensive projects and offsetting emissions, using a decentralized exchange for trading Carbon Tokens and incentivizing sustainability efforts. 
             </p>
             <ul class="text-gray">
               <li className="mb-4 w-fill flex">

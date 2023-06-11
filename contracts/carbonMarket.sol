@@ -8,7 +8,7 @@ import "@openzeppelin/contracts/token/ERC1155/IERC1155.sol";
 import "@openzeppelin/contracts/token/ERC1155/utils/ERC1155Holder.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "./certificate.sol";
-import  "./carbon.sol";
+import  "./carbonToken.sol";
 
     /// @title A NFT Marketplace using ERC1155
     /// @author Karan J Goraniya
@@ -42,7 +42,7 @@ contract  CarbonMarket is ERC1155Holder {
             }
         }
    
-    function fractionizeNft(uint256 nftId,uint256 amount) external {
+    function fractionizeNft(uint256 nftId) external {
       require(nftId >= 0, "Token doesnot exist");
       certificate.safeTransferFrom(msg.sender, address(this), nftId, 1, "");
       token.mint(msg.sender, certificate.tokenToValue(nftId));

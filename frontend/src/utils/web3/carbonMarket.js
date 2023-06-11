@@ -1,7 +1,7 @@
 import { ethers } from "ethers";
 
 const provider = new ethers.providers.Web3Provider(window.ethereum);
-const address = "0x0F048f25D75756b8803411bd462D0c5FB6245b86";
+const address = "0x0Ce1BB5c347154678B55bB2F8A04b6a1C6724268";
 const fracAbi = [
     "function fractionizeNft(uint256 nftId)"
 ];

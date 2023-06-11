@@ -56,7 +56,7 @@ contract Certificate is ERC1155, ERC1155Burnable{
         
         _mint(msg.sender, newItemId, 1, '');
         tokenToOwner[newItemId] = msg.sender;
-        tokenToValue[newItemId] = carbon;
+        tokenToValue[newItemId] = carbon* 10 **18;
         cerfIdList[newItemId] = _cerfId;
 
         _tokenIds.increment();
